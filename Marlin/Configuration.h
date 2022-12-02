@@ -138,8 +138,8 @@
 // 52 is 200k thermistor - ATC Semitec 204GT-2 (1k pullup)
 // 55 is 100k thermistor - ATC Semitec 104GT-2 (Used in ParCan) (1k pullup)
 
-#define TEMP_SENSOR_0 20
-#define TEMP_SENSOR_1 20
+#define TEMP_SENSOR_0 5 //ORIG 20
+#define TEMP_SENSOR_1 5 //ORIG 20
 #define TEMP_SENSOR_2 0
 #define TEMP_SENSOR_BED 20
 
@@ -163,15 +163,15 @@
 // When temperature exceeds max temp, your heater will be switched off.
 // This feature exists to protect your hotend from overheating accidentally, but *NOT* from thermistor short/failure!
 // You should use MINTEMP for thermistor short/failure protection.
-#define HEATER_0_MAXTEMP 275    // 275 C limit in Ultimaker 2 since the PTFE coupler degrades rapidly at higher temperatures.
+#define HEATER_0_MAXTEMP 300    // ORIG 275 C limit in Ultimaker 2 since the PTFE coupler degrades rapidly at higher temperatures.
 #define HEATER_1_MAXTEMP 275
 #define HEATER_2_MAXTEMP 275
 #define BED_MAXTEMP 130
 
 //Check if the heater heats up MAX_HEATING_TEMPERATURE_INCREASE within MAX_HEATING_CHECK_MILLIS while the PID was at the maximum.
 // If not, raise an error because most likely the heater is not heating up the temperature sensor. Indicating an issue in the system.
-#define MAX_HEATING_TEMPERATURE_INCREASE 10
-#define MAX_HEATING_CHECK_MILLIS (30 * 1000)
+#define MAX_HEATING_TEMPERATURE_INCREASE 0.1 //ORIG 10
+#define MAX_HEATING_CHECK_MILLIS (90000) //ORIG (30 * 1000)
 
 // If your bed has low resistance e.g. .6 ohm and throws the fuse you can duty cycle it to reduce the
 // average current. The value should be an integer and the heat bed will be turned on for 1 interval of
@@ -199,10 +199,10 @@
     //#define  DEFAULT_Kd 114
 
 // Ultimaker2
-    #define  DEFAULT_Kp 10.0
-    #define  DEFAULT_Ki 2.5
-    #define  DEFAULT_Kd 100.0
-
+    #define  DEFAULT_Kp 36.59 //ORIG 10
+    #define  DEFAULT_Ki 3.65  //ORIG 2.5
+    #define  DEFAULT_Kd 91.72 //ORIG 100
+    
 // MakerGear
 //    #define  DEFAULT_Kp 7.0
 //    #define  DEFAULT_Ki 0.1
@@ -322,7 +322,7 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 #define INVERT_X_DIR true     // for Mendel set to false, for Orca set to true
 #define INVERT_Y_DIR false    // for Mendel set to true, for Orca set to false
 #define INVERT_Z_DIR true     // for Mendel set to false, for Orca set to true
-#define INVERT_E0_DIR false   // for direct drive extruder v9 set to true, for geared extruder set to false
+#define INVERT_E0_DIR true   // for direct drive extruder v9 set to true, for geared extruder set to false
 #define INVERT_E1_DIR true    // for direct drive extruder v9 set to true, for geared extruder set to false
 #define INVERT_E2_DIR false   // for direct drive extruder v9 set to true, for geared extruder set to false
 
@@ -335,9 +335,9 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 #define min_software_endstops true // If true, axis won't move to coordinates less than HOME_POS.
 #define max_software_endstops true  // If true, axis won't move to coordinates greater than the defined lengths below.
 // Travel limits after homing
-#define X_MAX_POS 230
+#define X_MAX_POS 215
 #define X_MIN_POS 0
-#define Y_MAX_POS 224.5
+#define Y_MAX_POS 210
 #define Y_MIN_POS 0
 #define Z_MAX_POS 230
 #define Z_MIN_POS 0
@@ -363,7 +363,7 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 
 // default settings
 
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {80.0,80.0,200,282}  // default steps per unit for Ultimaker2
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {80.0,80.0,200,311}   // ORIG {80.0,80.0,200,282} default steps per unit for Ultimaker2
 #define DEFAULT_MAX_FEEDRATE          {300, 300, 40, 45}    // (mm/sec)
 #define DEFAULT_MAX_ACCELERATION      {9000,9000,100,10000} // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
 
